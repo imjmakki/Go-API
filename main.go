@@ -33,6 +33,10 @@ func PutArticles(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Put Endpoint Done")
 }
 
+func DeleteArticles(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Delete Endpoint Done")
+}
+
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Homepage Endpoint Hit")
 }
@@ -45,6 +49,7 @@ func handleRequests() {
 	myRouter.HandleFunc("/articles", AllArticles).Methods("GET")
 	myRouter.HandleFunc("/articles", PostArticles).Methods("POST")
 	myRouter.HandleFunc("/articles", PutArticles).Methods("PUT")
+	myRouter.HandleFunc("/articles", DeleteArticles).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8081", myRouter))
 }
 
