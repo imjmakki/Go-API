@@ -6,6 +6,18 @@ import (
 	"net/http"
 )
 
+type Article struct {
+	Title   string `json:"Title"`
+	Desc    string `json:"desc"`
+	Content string `json:"content"`
+}
+
+type Articles []Article
+
+func AllArticles(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("")
+}
+
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Homepage Endpoint Hit")
 }
