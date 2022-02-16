@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -15,7 +16,12 @@ type Article struct {
 type Articles []Article
 
 func AllArticles(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("")
+	articles := Articles{
+		Article{Title: "First Title with Go API", Desc: "First Description", Content: "Hello Go Developers"},
+	}
+
+	fmt.Println("Endpoint Hit: All Articles Endpoint")
+	json.NewEncoder(w).Encode(articles)
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
